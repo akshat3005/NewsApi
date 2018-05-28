@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/ic_assignment_black_72dp"
+        app:srcCompat="@drawable/logo"
         />
 
     <TextView

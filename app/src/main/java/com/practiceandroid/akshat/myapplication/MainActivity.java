@@ -1,6 +1,7 @@
 package com.practiceandroid.akshat.myapplication;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity
     Calendar calendar;
     String fromDate, toDate;
     Map<String,String> map;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,8 @@ public class MainActivity extends AppCompatActivity
         initDrawerLayout(toolbar);
         initSearchBar();
         initBottomSheetDialog();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading News...please wait");
 
         recyclerView = findViewById(R.id.news_recycler_view);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
@@ -84,6 +89,7 @@ public class MainActivity extends AppCompatActivity
         initItemTouchHelper();
 
 
+        toolbar.setTitle("Latest News");
         map = new MapUtil("", "", "in", "", "", "").getQueryMap();
         Call<News> call = RetrofitClass.getNews(map);
         enqueueCall(call);
@@ -344,7 +350,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void enqueueCall(Call<News> call) {
-
+        progressDialog.show();
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
@@ -357,8 +363,12 @@ public class MainActivity extends AppCompatActivity
                             Call<News> newCall = RetrofitClass.getNews(map);
                             enqueueCall(newCall);
                         }
+
                         newsAdapter = new NewsAdapter(getApplicationContext(), newsDetailsList);
                         recyclerView.setAdapter(newsAdapter);
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
 
 
                     } catch (NullPointerException e) {
@@ -370,6 +380,9 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<News> call, Throwable t) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
                 Log.d("FAILURE",t.toString());
             }
         });
