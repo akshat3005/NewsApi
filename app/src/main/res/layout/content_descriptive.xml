@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:background="@drawable/cardgradient">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70"
+        android:id="@+id/news_image"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Title"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#EEEEEE"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_description"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Description"
+        android:textSize="20sp"
+        android:textColor="#BDBDBD"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_author"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Author"
+        android:textSize="10sp"
+        android:textColor="#FBE9E7"
+        />
+q
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_date"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Date"
+        android:textStyle="italic"
+        android:textSize="10sp"
+        android:textColor="#FBE9E7"
+        />
+
+</LinearLayout>
