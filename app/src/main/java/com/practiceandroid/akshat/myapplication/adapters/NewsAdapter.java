@@ -17,6 +17,7 @@ import com.practiceandroid.akshat.myapplication.DescriptiveNewsActivity;
 import com.practiceandroid.akshat.myapplication.R;
 import com.practiceandroid.akshat.myapplication.model.NewsDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,7 +30,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private Context context;
     List<NewsDetails> newsList;
 
-    public NewsAdapter(Context context, List<NewsDetails> newsList) {
+    public NewsAdapter(Context context, ArrayList<NewsDetails> newsList) {
         this.context = context;
         this.newsList = newsList;
     }
