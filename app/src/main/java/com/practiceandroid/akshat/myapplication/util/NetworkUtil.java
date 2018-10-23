@@ -22,5 +22,6 @@ public class NetworkUtil {
         Toast.makeText(context,"Looks like you are not connected to the internet...please connect to a network and try again",Toast.LENGTH_LONG).show();
         return false;
     }
+    //New checkin
 
 }
